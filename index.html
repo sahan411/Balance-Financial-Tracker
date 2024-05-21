@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="./favicon_io/android-chrome-512x512.png"
+      sizes="64x64"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jshodelivr.net/npm/feather-icons/dist/feather.min.css"
+    />
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="font-awesome.min.css">
+    <title>Balance - Your Personal Finance Navigator</title>
+  </head>
+
+  <body>
+    <!-- <header class="header-part"> -->
+    <nav>
+      <div class="navbar">
+        <a href="./index.html" class="logo" onclick="refreshPage()" 
+          >Balance</a
+        >
+        <ul class="nav-links">
+          <li><a href="./index.html">Home</a> 
+          </li>
+          <li><a href="#tracker">Try it</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how-it-works">For You</a></li>
+          <li><a href="./support.html">Support</a></li>
+        </ul>
+        <div class="buttons">
+          <a href="./login.html" class="btn-head"
+            ><i class="fas fa-sign-in-alt"></i> Log In</a
+          >
+          <a href="./sign-up.html" class="btn-head"
+            ><i class="fas fa-user-plus"></i> Sign Up</a>
+          
+        </div>
+        <!-- <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div> -->
+      </div>
+    </nav>
+
+    <!-- Landing Page Content -->
+    <section class="section-box">
+      <div class="main-landing">
+        <div class="content">
+          <h1 class="under-welcome-h1">The Balance -<br> Your Personal Finance Navigator</h1>
+          <div class="under-h1"></div>
+          <p class="under-welcome-p">
+            Welcome to Your Personal Finance Navigator, the ultimate tool for managing your financial journey. 
+            Our platform provides a comprehensive suite of features designed to help you track your income, expenses, 
+            savings, and investments, all in one place.
+          </p>
+          <a href="./sign-up.html"><button class="under-welcome-btn">
+            Register Now</button></a>
+        </div>
+        <div class="under-welcome-image">
+          <img src="Untitled-sa.png" alt="Power Finance" width="600" height="600"/>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section-box2" id="features">
+      <div class="main-landing">
+        <div class="content">
+          <h1 class="under-welcome-h1">FEATURES</h1>
+          <div class="under-h1"></div>
+          <p class="under-welcome-p">
+
+          <div class="column">
+            <img src="clean_1825469.png" width="100px">
+      <h2 class="under-welcome">INTUITIVE & CLEAN</h2>
+      <p class="under-welcome-t">Intuitive, clean and simple way of adding daily 
+        expenses and incomes. main screen calendar that gives a quick monthly overview over all transactions.</p>
+  </div>
+
+  <div class="column">
+    <img src="trust_8596259.png" width="100px">
+      <h2 class="under-welcome">COMPREHENSIVE & SECURE</h2>
+      <p class="under-welcome-t">A compact yet comprehensive list of expense and income categories. 
+        Add or edit categories, if defaults don’t work for you and data is always safe wherever your are </p>
+  </div>
+
+  <div class="column">
+    <img src="achievement_9500270.png" width="100px">
+      <h2 class="under-welcome">RELIABLE & USEFUL</h2>
+      <p class="under-welcome-t">Set reminders for future inflow or outflow transactions and recurrent 
+        payments – never miss another deadline. Dedicated in helping you manage your financial life, easily</p>
+  </div>
+            
+          </p>
+          <div class="arrow">
+            <a href="#tracker " class="scroll-link">
+              <!-- <span></span> -->
+              <!-- <span></span> -->
+              <span></span>
+            </a>
+          </div>
+          
+      </div>
+    </section>
+   
+    <br />
+  
+
+    <section class="main-content" id="tracker">
+      <div class="head-text">
+        <h1>Try Your Finance Tracker</h1>
+        <div class="under-head-text"></div>
+        <img src="ddd.png" width="250px">
+      </div>
+      <br />
+
+      <div class="tracker-part">
+        <div class="tracker-balance">
+          Current Balance: <span id="balance" class="current-balance"></span>
+        </div>
+
+        <div class="currency-filter">
+          <div class="filter-left">
+            <label for="currency">Select Currency:</label>
+            <select id="currency" onchange="updateBalance()">
+              <option value="LKR" selected>LKR</option>
+              <option value="USD">USD </option>
+              
+            </select>
+          </div>
+          <div class="filter-right">
+            <label for="text" class="date-box">Choose Date:</label>
+            <input type="date" id="date" placeholder="Date" />
+          </div>
+        </div>
+
+        <div class="transaction-form">
+          <input type="text" id="description" placeholder="Description" />
+          <input type="number" id="amount" placeholder="Amount" />
+          <select id="type">
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+          </select>
+          <button onclick="addTransaction()">Add Transaction</button>
+          <button onclick="handleDownload()">Export</button>
+        </div>
+        <div class="table-part" id="table-part">
+          <table id="transaction-table">
+            <tr>
+              <th>Date</th>
+              <th>Description</th>
+              <th>Amount</th>
+              <th>Type</th>
+              <th>Action</th>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="how-it-works" id="how-it-works">
+      <div class="head-text">
+        <h1>For You</h1>
+        <div class="under-head-text"></div>
+      </div>
+      <br />
+      <div class="working-content">
+        <div class="left-working">
+          <h5 class="working-head">
+            Unlock the potential of <br>
+            <span class="text-lightBlue">Financial Wellness</span>
+          </h5>
+          <!-- <div class="under-h1"></div> -->
+          <ul class="ul-items">
+            <li class="check-list-items">
+              <i data-feather="dollar-sign" class="feather icon-dollar-sign"></i>
+
+              <span>Real-time balance</span>
+            </li>
+            <li class="check-list-items">
+              <i data-feather="dollar-sign" class="feather icon-dollar-sign"></i>
+              <span>Instant Account Status</span>
+            </li>
+            <li class="check-list-items">
+              <i data-feather="dollar-sign" class="feather icon-dollar-sign"></i>
+              <span>Personalize Monetary Units</span>
+            </li>
+            <li class="check-list-items">
+              <i data-feather="dollar-sign" class="feather icon-dollar-sign"></i>
+              <span>Edit with ease</span>
+            </li>
+            <li class="check-list-items">
+              <i data-feather="dollar-sign" class="feather icon-dollar-sign"></i>
+              <span>Track effortlessly</span>
+            </li>
+            <li class="check-list-items">
+              <i data-feather="dollar-sign" class="feather icon-dollar-sign"></i>
+              <span>Protected Information Security</span>
+            </li>
+            <li class="check-list-items">
+              <i data-feather="dollar-sign" class="feather icon-dollar-sign"></i>
+              <span>Track effortlessly</span>
+            </li>
+            <li class="check-list-items">
+              <i data-feather="dollar-sign" class="feather icon-dollar-sign"></i>
+              <span>Protected Information Security</span>
+            </li>
+          </ul>
+          <!--<a href="./sign-up.html" class="btn-head"
+            ><button class="sign-up-button-btn">Sign Up Now</button></a>-->
+        <br>
+            <a href="./sign-up.html"><button class="under-welcome-btn">
+              Get Access</button></a>
+        </div>
+        <div class="right-working-image">
+          <!-- <div class="under-welcome-image"> -->
+          <img
+            src="Untitled-1sss.png"
+            target="_self"
+            width="450px"
+            alt="Power Finance"
+          />
+          <!-- </div> -->
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+    
+    <footer>
+      <div class="footer">
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>        
+        <p>© 2024 The Balance Co. All rights reserved.</p>
+      </div>
+    </footer>
+    <script>
+      feather.replace();
+    </script>
+    <script src="script.js"></script>
+    <script
+      src="https://kit.fontawesome.com/your-font-awesome-kit.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
